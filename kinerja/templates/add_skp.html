@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <h3>Tahun {{headers_skp.tahun}}</h3>
+    <h3>Periode</h3>
+    {{headers_skp.periode_awal}} s.d. {{headers_skp.periode_akhir}}
+    
+    
+    {% comment %} <form action="" method="post">
+        <label for="thn">Tahun </label><br><input type="date"><br>
+        <label for="periode_awal">Periode awal </label><br><input type="date"><br>
+        <label for="periode_akhir">Periode akhir </label><br><input type="date"><br>
+        <label for="nip_pegawai">NIP Pegawai </label><br><input type="text"><br>
+        <label for="nip_pimpinan">NIP Pimpinan </label><br><input type="text"><br>
+    </form> {% endcomment %}
+    <h2>Pejabat Penilai</h2>
+    Nama : {{pimpinan.nama}} <br>
+    NIP : {{pimpinan.nip}} <br>
+    Pangkat : {{pimpinan.pangkat}} <br>
+    Jabatan : {{pimpinan.id_jabatan}} <br>
+    Unit Kerja : {{pimpinan.id_unker}} <br>
+    Unit Organisasi : {{pimpinan.id_unor}} <br>
+
+    <h2>Pegawai Negeri Sipil Yang Dinilai</h2>
+    Nama : {{pegawai.nama}} <br>
+    NIP : {{pegawai.nip}} <br>
+    Pangkat : {{pegawai.pangkat}} <br>
+    Jabatan : {{pegawai.id_jabatan}} <br>
+    Unit Kerja : {{pegawai.id_unker}} <br>
+    Unit Organisasi : {{pegawai.id_unor}} <br>
+
+    <table style="width:100%" border="1">
+	<thead>
+		<tr>
+			<!-- <th>id_absensi</th> -->
+			<th>Kegiatan Tugas Jabatan</th>
+			<th>AK</th>
+			<th>Kuantitas/Output</th>
+			<th>Kualitas/Mutu</th>
+			<th>Waktu</th>
+            <th>Biaya</th>
+		</tr>
+	</thead>
+	{% for item in detil_skp %}
+		
+		<tr>
+			<!-- <td> {{ item.id_absensi }} </td> -->
+			<!-- <td> {{ item.nip }} </td> -->
+			<td> {{ item.keg_tgs_jbtn }} </td>
+			<td> {{ item.angka_kredit}} </td>
+			<td> {{ item.qty_output}} </td>
+			<td> {{ item.mutu}} </td>
+			<td> {{ item.waktu}} </td>
+            <td> {{ item.biaya}} </td>
+		</tr>
+	
+	{% endfor %}
+	</table>
+
+   
+</body>
+</html>

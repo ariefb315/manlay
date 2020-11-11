@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <form action="{% url 'home'%}", method='POST'>
+        
+        {% csrf_token %}
+        {{SKP.as_p}}
+
+        <button type="submit">Submit</button>
+    </form>
+    
+    {% comment %} <form action="" method="post">
+        <label for="thn">Tahun </label><br><input type="date"><br>
+        <label for="periode_awal">Periode awal </label><br><input type="date"><br>
+        <label for="periode_akhir">Periode akhir </label><br><input type="date"><br>
+        <label for="nip_pegawai">NIP Pegawai </label><br><input type="text"><br>
+        <label for="nip_pimpinan">NIP Pimpinan </label><br><input type="text"><br>
+    </form> {% endcomment %}
+    <h2>Pejabat Penilai</h2>
+    Nama : {{pimpinan.nama}} <br>
+    NIP : {{pimpinan.nip}} <br>
+    Pangkat : {{pimpinan.pangkat}} <br>
+    Jabatan : {{pimpinan.id_jabatan}} <br>
+    Unit Kerja : {{pimpinan.id_unker}} <br>
+    Unit Organisasi : {{pimpinan.id_unor}} <br>
+
+    <h2>Pegawai Negeri Sipil Yang Dinilai</h2>
+    Nama : {{pegawai.nama}} <br>
+    NIP : {{pegawai.nip}} <br>
+    Pangkat : {{pegawai.pangkat}} <br>
+    Jabatan : {{pegawai.id_jabatan}} <br>
+    Unit Kerja : {{pegawai.id_unker}} <br>
+    Unit Organisasi : {{pegawai.id_unor}} <br>
+
+   
+</body>
+</html>
