@@ -74,6 +74,29 @@ def pegawai_list(requests):
             return Response(pegawai_serializer.data, status=status.HTTP_201_CREATED)
         return Response(pegawai_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET', 'PUT', 'DELETE'])
+def pegawai_detail(requests, pk):
+    try:
+        pegawai = Ms_Pegawai.objects.get(pk=pk)
+    except Ms_Pegawai.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    if requests.method == 'GET':
+        pegawai_serializer = PegawaiSerializer(pegawai)
+        return Response(pegawai_serializer.data)
+    
+    elif requests.method == 'PUT':
+        pegawai_serializer = PegawaiSerializer(pegawai, data=requests.data)
+        if pegawai_serializer.is_valid():
+            pegawai_serializer.save()
+            return Response(pegawai_serializer.data)
+        return Response(pegawai_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif requests.method == 'DELETE':
+        pegawai.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
 @api_view(['GET', 'POST'])
 def kinerja_list(requests):
     if requests.method == 'GET':
@@ -87,3 +110,15 @@ def kinerja_list(requests):
             kinerja_serializer.save()
             return Response(kinerja_serializer.data, status=status.HTTP_201_CREATED)
         return Response(kinerja_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def kinerja_detail(requests, pk):
+    try:
+        kinerja = Ms_tugas_skp.objects.get(pk=pk)
+    except Ms_tugas_skp.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    if requests.method == 'GET':
+        kinerja_serializer = KinerjaSerializer(kinerja)
+        return Response(kinerja_serializer.data)
+
