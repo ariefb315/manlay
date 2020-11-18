@@ -16,5 +16,5 @@ class PegawaiSerializer(serializers.ModelSerializer):
 class KinerjaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ms_tugas_skp
-        fields = ('id_header_skp', 'angka_kredit', 'qty_output', 'mutu', 'waktu', 'biaya')
+        fields = ('id_header_skp','keg_tgs_jbtn', 'angka_kredit', 'qty_output', 'mutu', 'waktu', 'biaya')
         depth = 1
